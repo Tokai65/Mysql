@@ -44,6 +44,111 @@ _:匹配当前位置单个字符；
 
 
 
+5、选择数据库
+语法：use 数据名称;
+
+
+6、 修改数据库
+修改数据库库选项：字符集和校对集;
+基本语法：alter database 数据名 charset=字符集;
+
+
+7、删除数据库
+基本语法：drop database 数据库名;
+
+
+8、创建数据表
+创建数据表
+基本语法：creat table 表名（字段名 字段类型[字段属性]，字段名 字段类型[字段属性]，…）[表选项];
+
+
+创建表必须要挂在某个数据库上
+// 数据库名.表名  用点来链接数据库和表
+create table mydatabase.mytable( name varchar(10));
+
+使用表选项：
+create table student(name varchar(10))engine[=]innodb/myisam charset utf8;
+
+复制已有表结构
+只复制结构，不会复制数据。
+基本语法：create table 新表名 like 已有表名 （不一定是同一个数据库的，其他数据库可采用数据库.表名的方式来引用）
+
+
+8、显示表
+显示所有表：show tables;
+
+显示部分表：show tables like ‘匹配模式’;
+
+显示表结构：
+describe 表名;
+desc 表名;
+show columns from 表名
+
+显示表创建语句
+show create table 表名;
+
+
+9、表操作
+设置表属性
+基本语法：alter table 表名 表选项 值；
+
+修改表名：rename 旧表名 to 新表名；
+
+新增字段：
+alter table 表名 add [column] 新字段名 列类型 [列属性] [位置first/after字段名]
+
+修改字段：
+alter table 表名 change 旧字段名 新字段名 字段类型 [列属性] [新位置]
+
+修改字段类型（属性）：
+alter table 表名 modify 字段名 新类型 [新属性] [新位置]
+
+删除字段：
+alter table 表名 drop 字段名
+
+删除表结构：
+drop table 表名 [,表名2…]
+
+
+10、数据操作
+插入操作：
+基本语法：
+insert into 表名 [ (字段列表）] values(对应字段列表) //指定字段插入值，不要求顺序，但是要求对应
+
+insert into 表名 values(对应表结构) //所有字段插入数据，要对应字段顺序
+
+insert into my_teacher (name,age) values('jack',30);
+
+
+查询操作：
+查询全部数据： select * from 表名 ;
+查询部分数据：select 字段列表 from 表名; // 字段列表用逗号隔开
+条件查询数据：select 字段列表 / * from 表名 where 字段名=值；
+
+删除操作
+delete from 表名 where 条件;
+
+更新操作
+update 表名 set 字段名=新值 [where 条件];
+
+
+
+11、字符集
+处理中文数据
+set names gbk;
+等同于：
+set character_set_client=gbk;
+set character_set_connection=gbk;
+set character_set_results=gbk;
+
+
+
+
+
+
+
+
+
 
 
 
